@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Owner Panel - A.AF Printing Press</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Owner Panel</h1>
+
+  <div id="login">
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <div id="panel" style="display:none;">
+    <h2>Edit About Us</h2>
+    <textarea id="editAbout" rows="6"></textarea><br>
+    <button onclick="saveAbout()">Save Changes</button>
+
+    <h2>Submitted Works</h2>
+    <ul id="workList"></ul>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pw = document.getElementById("password").value;
+      if (pw === "aaf@123.com") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("panel").style.display = "block";
+
+        const about = localStorage.getItem("about") || 
+`A.AF Printing Press was founded by Alemayehu Mundro in 2000 E.C.\nIt is the oldest printing company in Wolaita Sodo.\n📧 Email: alexmundro@gmail.com\n📞 Phone: +251 91 218 9444`;
+        document.getElementById("editAbout").value = about;
+
+        const works = JSON.parse(localStorage.getItem("works")) || [];
+        const list = document.getElementById("workList");
+        list.innerHTML = "";
+        works.forEach((w, i) => {
+          const li = document.createElement("li");
+          li.textContent = `${i + 1}. ${w}`;
+          list.appendChild(li);
+        });
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+
+    function saveAbout() {
+      const updated = document.getElementById("editAbout").value;
+      localStorage.setItem("about", updated);
+      alert("About Us updated!");
+    }
+  </script>
+<script>function loadWorks() {
+  const works = JSON.parse(localStorage.getItem("works")) || [];
+  const list = document.getElementById("workList");
+  list.innerHTML = "";
+
+  works.forEach((work, index) => {
+    list.innerHTML += `
+      <li>
+        ${index + 1}. ${work}<br>
+        <button onclick="acceptWork(${index})">✅ Accept</button>
+        <button onclick="deleteWork(${index})">❌ Delete</button>
+      </li><br>`;
+  });
+}
+
+function acceptWork(index) {
+  const works = JSON.parse(localStorage.getItem("works")) || [];
+  alert("✅ Accepted: " + works[index]);
+  // Optional: You can save accepted ones separately if needed
+}
+
+function deleteWork(index) {
+  const works = JSON.parse(localStorage.getItem("works")) || [];
+  if (confirm("Are you sure to delete this work?")) {
+    works.splice(index, 1); // remove the selected work
+    localStorage.setItem("works", JSON.stringify(works));
+    loadWorks(); // refresh the list
+  }
+}
+</script>
+</body>
+</html>
+<section id="intro" class="intro-section">
+  <h1>A.AF PRINTING PRESS</h1>
+  <p>"We print differently"</p>
+</section>
+<footer>
+  
+    <p>&copy; 2017 - 2020 EC. Copyright by Eyosiyas Birega</p>
+  <p>MADE BY EYOSIYAS BIREGA</p>
+</footer>
+<script>
+  function checkPassword() {
+    const pw = document.getElementById("password").value;
+    if (pw === "aaf@123.com") {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("panel").style.display = "block";
+      loadWorks(); // show the works when logged in
+    } else {
+      alert("Incorrect password!");
+    }
+  }
+
+  // ✅ Paste Accept/Delete Code here
+</script>

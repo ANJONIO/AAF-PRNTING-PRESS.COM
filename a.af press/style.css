@@ -1,0 +1,78 @@
+body {
+  background-color: #001f3f;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #FFD700;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #FFD700;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.card {
+  background-color: #003366;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+body {
+  background-color: #001f3f;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center; /* CENTER ALL TEXT */
+}
+footer {
+  text-align: center;
+  margin-top: 60px; /* creates a bigger gap above */
+  padding-top: 20px;
+  color: #FFD700;
+  font-size: 14px;
+  border-top: 1px solid #FFD700; /* optional line above footer */
+}
+button {
+  padding: 10px 20px;
+  margin: 15px; /* increase margin between buttons */
+  background-color: #FFD700;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+}
+li button {
+  margin: 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+li button:first-child {
+  background-color: #00cc66; /* Accept = green */
+  color: white;
+}
+
+li button:last-child {
+  background-color: #cc0000; /* Delete = red */
+  color: white;
+}

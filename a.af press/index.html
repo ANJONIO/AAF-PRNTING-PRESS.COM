@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>A.AF PRINTING PRESS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>A.AF PRINTING PRESS</h1>
+
+  <button onclick="showAbout()">About Us</button>
+  <button onclick="addWork()">Add Work</button>
+
+  <div id="about" class="card" style="display:none;">
+    <h2>About Us</h2>
+    <p id="aboutText">
+      A.AF Printing Press was founded by Alemayehu Mundro in 2000 E.C.
+It is the oldest printing company in Wolaita Sodo.<br>
+ኤ.ኤፍ ማተሚያ ቤት በ2000 ዓ.ም በአቶ አለማየሁ ሙንድሮ ተመስርቶ አገልግሎት እየሰጠ ይግኛል።<br>
+የማተሚያ ቤቱ አድራሻ ፦ ወላይታ ሶዶ 21 ማዞሪያ ወረድ ብሎ ከማሪያም ቤ/ክ ፊት ለፊት ያገኙናል።<br>
+ለበለጠ መረጃ ፦ <br>
+📧 Email: alexmundro@gmail.com<br>
+📞 Phone: +251 91 218 9444<br>
+ A.AF PRINTING PRESS<br>
+"We print differently"<br>
+    </p>
+  </div>
+
+  <div id="workArea" class="card" style="display:none;">
+    <h2>Add Your Work</h2>
+    <textarea id="workInput" placeholder="Write your work here..."></textarea>
+    <br>
+    <button onclick="saveWork()">Submit</button>
+  </div>
+
+  <br><br>
+<br>
+<button onclick="location.href='owner.html'">🔐 Owner Login</button>
+
+  <script>
+    function showAbout() {
+      document.getElementById("about").style.display = "block";
+      document.getElementById("workArea").style.display = "none";
+    }
+
+    function addWork() {
+      document.getElementById("workArea").style.display = "block";
+      document.getElementById("about").style.display = "none";
+    }
+
+    function saveWork() {
+      const work = document.getElementById("workInput").value;
+      if (!work.trim()) return alert("Please enter your work.");
+      let works = JSON.parse(localStorage.getItem("works")) || [];
+      works.push(work);
+      localStorage.setItem("works", JSON.stringify(works));
+      alert("Work submitted!");
+      document.getElementById("workInput").value = "";
+    }
+  </script>
+</body>
+</html>
+<section id="intro" class="intro-section">
+  <h1>A.AF PRINTING PRESS</h1>
+  <p>"We print differently"</p>
+</section>
+<footer>
+  <p>&copy; 2017 - 2020 EC. Copyright by Eyosiyas Birega</p>
+  <p>MADE BY EYOSIYAS BIREGA</p>
+</footer>
+<br>
+
